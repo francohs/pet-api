@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { PetsModule } from './pets/pets.module';
 import { AppointmentsModule } from './appointments/appointments.module';
 import { RemindersModule } from './reminders/reminders.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -37,5 +38,6 @@ import { RemindersModule } from './reminders/reminders.module';
     AppointmentsModule,
     RemindersModule,
   ],
+  controllers: [AppController],
 })
 export class AppModule {}
