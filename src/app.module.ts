@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { CacheModule } from '@nestjs/cache-manager';
 import { OwnersModule } from './owners/owners.module';
 import { AuthModule } from './auth/auth.module';
 import { PetsModule } from './pets/pets.module';
@@ -16,6 +17,17 @@ import { PetsModule } from './pets/pets.module';
         uri: configService.getOrThrow<string>('MONGODB_URI'),
       }),
       inject: [ConfigService],
+    }),
+    CacheModule.registerAsync({
+      isGlobal: true,
+      inject: [ConfigService],
+      useFactory: async (configService: ConfigService) => {
+        const store = await import('cache-manager-ioredis-yet');
+        return {
+          store: store.default,
+          url: configService.getOrThrow<string>('REDIS_URL'),
+        };
+      },
     }),
     OwnersModule,
     AuthModule,
