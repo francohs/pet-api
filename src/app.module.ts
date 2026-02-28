@@ -5,6 +5,8 @@ import { CacheModule } from '@nestjs/cache-manager';
 import { OwnersModule } from './owners/owners.module';
 import { AuthModule } from './auth/auth.module';
 import { PetsModule } from './pets/pets.module';
+import { AppointmentsModule } from './appointments/appointments.module';
+import { RemindersModule } from './reminders/reminders.module';
 
 @Module({
   imports: [
@@ -32,6 +34,8 @@ import { PetsModule } from './pets/pets.module';
     OwnersModule,
     AuthModule,
     PetsModule,
+    AppointmentsModule,
+    RemindersModule,
   ],
 })
 export class AppModule {}

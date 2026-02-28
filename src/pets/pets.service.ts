@@ -38,7 +38,7 @@ export class PetsService {
     const pet = await this.petModel.findOneAndUpdate(
       { _id: id, ownerId },
       attrs,
-      { new: true },
+      { returnDocument: 'after' },
     );
     if (!pet) {
       throw new NotFoundException('Pet not found');
