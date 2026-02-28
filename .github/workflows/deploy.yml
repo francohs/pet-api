@@ -42,6 +42,6 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: petcare-manager
           environment_name: Petcare-manager-env
-          region: us-east-1
+          region: us-east-2
           version_label: ${{ github.sha }}
           deployment_package: deploy.zip
